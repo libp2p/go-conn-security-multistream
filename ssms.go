@@ -20,6 +20,8 @@ type SSMuxer struct {
 	OrderPreference []string
 }
 
+var _ ss.Transport = (*SSMuxer)(nil)
+
 // AddTransport adds a stream security transport to this multistream muxer.
 //
 // This method is *not* thread-safe. It should be called only when initializing
