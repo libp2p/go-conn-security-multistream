@@ -1,4 +1,4 @@
-package ssms
+package csms
 
 import (
 	"context"
@@ -6,14 +6,14 @@ import (
 	"sync"
 	"testing"
 
-	ss "github.com/libp2p/go-stream-security"
-	sst "github.com/libp2p/go-stream-security/test"
+	connsec "github.com/libp2p/go-conn-security"
+	sst "github.com/libp2p/go-conn-security/test"
 )
 
 func TestCommonProto(t *testing.T) {
 	var at, bt SSMuxer
-	atInsecure := ss.InsecureTransport("peerA")
-	btInsecure := ss.InsecureTransport("peerB")
+	atInsecure := connsec.InsecureTransport("peerA")
+	btInsecure := connsec.InsecureTransport("peerB")
 	at.AddTransport("/plaintext/1.0.0", &atInsecure)
 	bt.AddTransport("/plaintext/1.1.0", &btInsecure)
 	bt.AddTransport("/plaintext/1.0.0", &btInsecure)
@@ -22,8 +22,8 @@ func TestCommonProto(t *testing.T) {
 
 func TestNoCommonProto(t *testing.T) {
 	var at, bt SSMuxer
-	atInsecure := ss.InsecureTransport("peerA")
-	btInsecure := ss.InsecureTransport("peerB")
+	atInsecure := connsec.InsecureTransport("peerA")
+	btInsecure := connsec.InsecureTransport("peerB")
 
 	at.AddTransport("/plaintext/1.0.0", &atInsecure)
 	bt.AddTransport("/plaintext/1.1.0", &btInsecure)

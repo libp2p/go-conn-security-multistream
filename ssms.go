@@ -1,4 +1,4 @@
-package ssms
+package csms
 
 import (
 	"context"
@@ -6,7 +6,7 @@ import (
 	"net"
 
 	peer "github.com/libp2p/go-libp2p-peer"
-	ss "github.com/libp2p/go-stream-security"
+	connsec "github.com/libp2p/go-conn-security"
 	mss "github.com/multiformats/go-multistream"
 )
 
@@ -16,19 +16,19 @@ import (
 // after use.
 type SSMuxer struct {
 	mux             mss.MultistreamMuxer
-	tpts            map[string]ss.Transport
+	tpts            map[string]connsec.Transport
 	OrderPreference []string
 }
 
-var _ ss.Transport = (*SSMuxer)(nil)
+var _ connsec.Transport = (*SSMuxer)(nil)
 
 // AddTransport adds a stream security transport to this multistream muxer.
 //
 // This method is *not* thread-safe. It should be called only when initializing
 // the SSMuxer.
-func (sm *SSMuxer) AddTransport(path string, transport ss.Transport) {
+func (sm *SSMuxer) AddTransport(path string, transport connsec.Transport) {
 	if sm.tpts == nil {
-		sm.tpts = make(map[string]ss.Transport, 1)
+		sm.tpts = make(map[string]connsec.Transport, 1)
 	}
 
 	sm.mux.AddHandler(path, nil)
@@ -38,7 +38,7 @@ func (sm *SSMuxer) AddTransport(path string, transport ss.Transport) {
 
 // SecureInbound secures an inbound connection using this multistream
 // multiplexed stream security transport.
-func (sm *SSMuxer) SecureInbound(ctx context.Context, insecure net.Conn) (ss.Conn, error) {
+func (sm *SSMuxer) SecureInbound(ctx context.Context, insecure net.Conn) (connsec.Conn, error) {
 	tpt, err := sm.selectProto(ctx, insecure, true)
 	if err != nil {
 		return nil, err
@@ -48,7 +48,7 @@ func (sm *SSMuxer) SecureInbound(ctx context.Context, insecure net.Conn) (ss.Con
 
 // SecureOutbound secures an outbound connection using this multistream
 // multiplexed stream security transport.
-func (sm *SSMuxer) SecureOutbound(ctx context.Context, insecure net.Conn, p peer.ID) (ss.Conn, error) {
+func (sm *SSMuxer) SecureOutbound(ctx context.Context, insecure net.Conn, p peer.ID) (connsec.Conn, error) {
 	tpt, err := sm.selectProto(ctx, insecure, false)
 	if err != nil {
 		return nil, err
@@ -56,7 +56,7 @@ func (sm *SSMuxer) SecureOutbound(ctx context.Context, insecure net.Conn, p peer
 	return tpt.SecureOutbound(ctx, insecure, p)
 }
 
-func (sm *SSMuxer) selectProto(ctx context.Context, insecure net.Conn, server bool) (ss.Transport, error) {
+func (sm *SSMuxer) selectProto(ctx context.Context, insecure net.Conn, server bool) (connsec.Transport, error) {
 	var proto string
 	var err error
 	done := make(chan struct{})
