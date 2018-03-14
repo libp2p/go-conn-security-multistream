@@ -6,27 +6,27 @@ import (
 	"sync"
 	"testing"
 
-	connsec "github.com/libp2p/go-conn-security"
+	insecure "github.com/libp2p/go-conn-security/insecure"
 	sst "github.com/libp2p/go-conn-security/test"
 )
 
 func TestCommonProto(t *testing.T) {
 	var at, bt SSMuxer
-	atInsecure := connsec.InsecureTransport("peerA")
-	btInsecure := connsec.InsecureTransport("peerB")
-	at.AddTransport("/plaintext/1.0.0", &atInsecure)
-	bt.AddTransport("/plaintext/1.1.0", &btInsecure)
-	bt.AddTransport("/plaintext/1.0.0", &btInsecure)
+	atInsecure := insecure.New("peerA")
+	btInsecure := insecure.New("peerB")
+	at.AddTransport("/plaintext/1.0.0", atInsecure)
+	bt.AddTransport("/plaintext/1.1.0", btInsecure)
+	bt.AddTransport("/plaintext/1.0.0", btInsecure)
 	sst.SubtestRW(t, &at, &bt, "peerA", "peerB")
 }
 
 func TestNoCommonProto(t *testing.T) {
 	var at, bt SSMuxer
-	atInsecure := connsec.InsecureTransport("peerA")
-	btInsecure := connsec.InsecureTransport("peerB")
+	atInsecure := insecure.New("peerA")
+	btInsecure := insecure.New("peerB")
 
-	at.AddTransport("/plaintext/1.0.0", &atInsecure)
-	bt.AddTransport("/plaintext/1.1.0", &btInsecure)
+	at.AddTransport("/plaintext/1.0.0", atInsecure)
+	bt.AddTransport("/plaintext/1.1.0", btInsecure)
 
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
