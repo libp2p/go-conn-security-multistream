@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"net"
 
-	peer "github.com/libp2p/go-libp2p-peer"
 	connsec "github.com/libp2p/go-conn-security"
+	peer "github.com/libp2p/go-libp2p-peer"
 	mss "github.com/multiformats/go-multistream"
 )
 
