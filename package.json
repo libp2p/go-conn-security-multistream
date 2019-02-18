@@ -9,9 +9,9 @@
   "gxDependencies": [
     {
       "author": "Stebalien",
-      "hash": "QmUc71oqEeRBtBVjFQmpCmShwrwQkAAq3zGr5UjbPUk5tW",
+      "hash": "QmWdufxe3UrFtycBBj1895k4xnUWCbkuGbmBxtT7N3smjm",
       "name": "go-conn-security",
-      "version": "0.1.24"
+      "version": "0.1.26"
     },
     {
       "author": "whyrusleeping",
@@ -31,6 +31,6 @@
   "license": "MIT",
   "name": "go-conn-security-multistream",
   "releaseCmd": "git commit -a -m \"gx publish $VERSION\"",
-  "version": "0.1.23"
+  "version": "0.1.24"
 }
 
