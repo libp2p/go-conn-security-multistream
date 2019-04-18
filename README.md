@@ -16,6 +16,7 @@ This package provides a multistream multiplexed [security transport](https://git
 Known libp2p security transports include:
 
 * [go-libp2p-secio](https://github.com/libp2p/go-libp2p-secio)
+* [go-libp2p-tls](https://github.com/libp2p/go-libp2p-tls)
 
 ## Install
 
