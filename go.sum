@@ -54,8 +54,8 @@ github.com/libp2p/go-buffer-pool v0.0.1/go.mod h1:xtyIz9PMobb13WaxR6Zo1Pd1zXJKYg
 github.com/libp2p/go-flow-metrics v0.0.1/go.mod h1:Iv1GH0sG8DtYN3SVJ2eG221wMiNpZxBdp967ls1g+k8=
 github.com/libp2p/go-libp2p-core v0.0.1 h1:HSTZtFIq/W5Ue43Zw+uWZyy2Vl5WtF0zDjKN8/DT/1I=
 github.com/libp2p/go-libp2p-core v0.0.1/go.mod h1:g/VxnTZ/1ygHxH3dKok7Vno1VfpvGcGip57wjTU4fco=
-github.com/libp2p/go-libp2p-core v0.2.3-0.20190921111314-92b34772ebd3 h1:LTzgyDgdTCVXciuq8j/KycgJW8PgZTsj3YC8HKLTtaU=
-github.com/libp2p/go-libp2p-core v0.2.3-0.20190921111314-92b34772ebd3/go.mod h1:1Muyk4HEeyPytWH5XRiczNC1ghbTq70PNn0uEbcLCxY=
+github.com/libp2p/go-libp2p-core v0.2.3-0.20190921112635-3f9dbee9cf05 h1:jW9tYvbxVQsFVsCOJr3AXsfnAJm4/BOCnTPWNbkJ7Zc=
+github.com/libp2p/go-libp2p-core v0.2.3-0.20190921112635-3f9dbee9cf05/go.mod h1:1Muyk4HEeyPytWH5XRiczNC1ghbTq70PNn0uEbcLCxY=
 github.com/libp2p/go-libp2p-testing v0.0.2 h1:p9ySW7MFvGGs83hAAe0MPGnjy/tPjl5KyxpMkojdZ+g=
 github.com/libp2p/go-libp2p-testing v0.0.2/go.mod h1:gvchhf3FQOtBdr+eFUABet5a4MBLK8jM3V4Zghvmi+E=
 github.com/libp2p/go-msgio v0.0.4 h1:agEFehY3zWJFUHK6SEMR7UYmk2z6kC3oeCM7ybLhguA=
