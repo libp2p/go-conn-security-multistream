@@ -10,7 +10,7 @@
 
 This package provides a multistream multiplexed [security transport](https://github.com/libp2p/go-conn-security). It:
 
-1. Selects a security security transport using multistream-select.
+1. Selects a security transport using multistream-select.
 2. Secures the stream using the selected transport.
 
 Known libp2p security transports include:
