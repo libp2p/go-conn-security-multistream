@@ -38,7 +38,7 @@ func TestCommonProto(t *testing.T) {
 	at.AddTransport("/plaintext/1.0.0", atInsecure)
 	bt.AddTransport("/plaintext/1.1.0", btInsecure)
 	bt.AddTransport("/plaintext/1.0.0", btInsecure)
-	sst.SubtestRW(t, &TransportAdapter{mux: &at}, &TransportAdapter{mux: &bt}, "peerA", "peerB")
+	sst.SubtestRW(t, &TransportAdapter{mux: &at}, &TransportAdapter{mux: &bt}, idA.ID(), idB.ID())
 }
 
 func TestNoCommonProto(t *testing.T) {
