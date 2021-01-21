@@ -81,7 +81,7 @@ func (sm *SSMuxer) selectProto(ctx context.Context, insecure net.Conn, server bo
 			iamserver = true
 			proto, _, err = sm.mux.Negotiate(insecure)
 		} else {
-			proto, iamserver, err = mss.SelectWithSimopen(sm.OrderPreference, insecure)
+			proto, iamserver, err = mss.SelectWithSimopenOrFail(sm.OrderPreference, insecure)
 		}
 	}()
 
