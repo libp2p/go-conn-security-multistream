@@ -58,6 +58,9 @@ func (sm *SSMuxer) SecureOutbound(ctx context.Context, insecure net.Conn, p peer
 	var sconn sec.SecureConn
 	if server {
 		sconn, err = tpt.SecureInbound(ctx, insecure)
+		if err != nil {
+			return nil, false, fmt.Errorf("failed to secure inbound connection: %s", err)
+		}
 		// ensure the correct peer connected to us
 		if sconn.RemotePeer() != p {
 			sconn.Close()
