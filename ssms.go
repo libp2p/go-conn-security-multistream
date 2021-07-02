@@ -64,7 +64,7 @@ func (sm *SSMuxer) SecureOutbound(ctx context.Context, insecure net.Conn, p peer
 		// ensure the correct peer connected to us
 		if sconn.RemotePeer() != p {
 			sconn.Close()
-			return nil, false, fmt.Errorf("Unexpected peer")
+			return nil, false, fmt.Errorf("unexpected peer")
 		}
 	} else {
 		sconn, err = tpt.SecureOutbound(ctx, insecure, p)

@@ -63,7 +63,7 @@ func TestNoCommonProto(t *testing.T) {
 		defer a.Close()
 		_, _, err := at.SecureInbound(ctx, a)
 		if err == nil {
-			t.Fatal("conection should have failed")
+			t.Error("conection should have failed")
 		}
 	}()
 
@@ -72,7 +72,7 @@ func TestNoCommonProto(t *testing.T) {
 		defer b.Close()
 		_, _, err := bt.SecureOutbound(ctx, b, "peerA")
 		if err == nil {
-			t.Fatal("connection should have failed")
+			t.Error("connection should have failed")
 		}
 	}()
 	wg.Wait()
