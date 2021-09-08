@@ -17,8 +17,8 @@ type TransportAdapter struct {
 	mux *SSMuxer
 }
 
-func (sm *TransportAdapter) SecureInbound(ctx context.Context, insecure net.Conn) (sec.SecureConn, error) {
-	sconn, _, err := sm.mux.SecureInbound(ctx, insecure)
+func (sm *TransportAdapter) SecureInbound(ctx context.Context, insecure net.Conn, p peer.ID) (sec.SecureConn, error) {
+	sconn, _, err := sm.mux.SecureInbound(ctx, insecure, p)
 	return sconn, err
 }
 
@@ -61,9 +61,9 @@ func TestNoCommonProto(t *testing.T) {
 	go func() {
 		defer wg.Done()
 		defer a.Close()
-		_, _, err := at.SecureInbound(ctx, a)
+		_, _, err := at.SecureInbound(ctx, a, "")
 		if err == nil {
-			t.Error("conection should have failed")
+			t.Error("connection should have failed")
 		}
 	}()
 
